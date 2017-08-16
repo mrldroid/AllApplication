@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_text_view_animation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="xxx.test.allapplication.activity.TextViewAnimationActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_sale_deal"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:paddingRight="13dp"
+        android:background="@drawable/bg"
+        >
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/sale_car_left_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="当天成交"
+            android:textSize="15dp"
+            android:textColor="@color/color_f85d00"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:id="@+id/imgRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/homepage_buy_car_arrow2"
+            />
+
+        <ImageView
+            android:id="@+id/imgLayer"
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_highlight_anim"
+            android:alpha="0.5"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:id="@+id/shadow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_shadow_anim"
+            android:layout_toRightOf="@id/sale_car_left_txt"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"
+            />
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="极速"
+            android:textSize="15dp"
+            android:layout_toLeftOf="@id/imgRight"
+            android:textColor="@color/color_f85d00"
+            android:visibility="gone"
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="restart"
+        android:onClick="restart"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>

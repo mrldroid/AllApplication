@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.antfortune.freeline'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "xxx.test.allapplication"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
+        multiDexEnabled true
+        afterEvaluate {
+            tasks.matching {
+                it.name.startsWith('dex')
+            }.each { dx ->
+                if (dx.additionalParameters == null) {
+                    dx.additionalParameters = []
+                }
+                dx.additionalParameters += '--multi-dex'
+                // 设置multidex.keep文件中class为第一个dex文件中包含的class，如果没有下一项设置此项无作用
+                dx.additionalParameters += "--main-dex-list=$projectDir/multidex.keep".toString()
+                //此项添加后第一个classes.dex文件只能包含-main-dex-list列表中class
+                dx.additionalParameters += '--minimal-main-dex'
+                dx.additionalParameters += '--set-max-idx-number=10000'
+            }
+        }
+        jackOptions {
+            enabled true
+        }
+
+        ndk{
+            moduleName "neo"         //生成的so名字
+            ldLibs "log"
+            abiFilters "armeabi", "armeabi-v7a"
+        }
+
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            jniDebuggable true
+        }
+    }
+
+
+}
+
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(path: ':lib_zxing')
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:multidex:1.0.1'
+
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.github.dongjunkun:DropDownMenu:1.0.3'
+    compile 'com.jaeger.statusbaruitl:library:1.3.2'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    testCompile 'junit:junit:4.12'
+    compile 'com.google.code.gson:gson:2.4+'
+    compile 'com.baoyz.swipemenulistview:library:1.3.0'
+    compile files('libs/zip4j_1.3.2.jar')
+    compile 'com.liulishuo.filedownloader:library:1.4.2'
+    compile "io.reactivex.rxjava2:rxjava:2.0.0"
+
+
+    compile 'com.daimajia.numberprogressbar:library:1.4@aar'
+
+    compile 'com.android.support:support-vector-drawable:25.1.0'
+
+    // Retrofit & OkHttp
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+
+    compile 'com.zhy:okhttputils:2.6.2'
+
+    compile 'com.meituan.android.walle:library:1.1.4'
+    compile 'com.facebook.shimmer:shimmer:0.1.0@aar'
+}
