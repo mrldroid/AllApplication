@@ -1,6 +1,5 @@
 package xxx.test.allapplication;
 
-
 /**
  * Created by neo on 17/3/23.
  */

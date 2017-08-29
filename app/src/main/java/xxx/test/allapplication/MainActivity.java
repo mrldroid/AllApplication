@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.zxing.client.android.CaptureActivity;
 import com.jaeger.library.StatusBarUtil;
@@ -21,6 +23,7 @@ import xxx.test.allapplication.activity.NestedFragmentActivity;
 import xxx.test.allapplication.activity.NotificationRemoteViewActivity;
 import xxx.test.allapplication.activity.RetrofitActivity;
 import xxx.test.allapplication.activity.RxJava2Activity;
+import xxx.test.allapplication.activity.SlidingMenuActivity;
 import xxx.test.allapplication.activity.SpannableActivity;
 import xxx.test.allapplication.activity.StaticLayoutActivity;
 import xxx.test.allapplication.activity.TestActivity;
@@ -38,7 +41,13 @@ public class MainActivity extends AppCompatActivity {
         App.mSystemUiVisibility = getWindow().getDecorView().getSystemUiVisibility();
         StatusBarUtil.setColor(this, ContextCompat.getColor(this,R.color.colorPrimaryDark),0);
         imageView = (ImageView) findViewById(R.id.imageView);
-
+        TextView textView = new TextView(this);
+        textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT));
+        textView.setText("neoeneas");
+        ViewGroup viewGroup = (ViewGroup) getWindow().getDecorView();
+        View view = viewGroup.getChildAt(0);
+        viewGroup.addView(textView);
     }
 
     public void spannable(View view){
@@ -115,5 +124,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void test(View view) {
         startActivity(new Intent(this,TestActivity.class));
+    }
+
+    public void slide(View view) {
+        startActivity(new Intent(this, SlidingMenuActivity.class));
     }
 }

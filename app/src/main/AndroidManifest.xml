@@ -47,6 +47,8 @@
     <activity android:name=".activity.CountDownActivity"/>
     <activity android:name=".activity.TestActivity">
     </activity>
+    <activity android:name=".activity.SlidingMenuActivity">
+    </activity>
   </application>
 
 </manifest>

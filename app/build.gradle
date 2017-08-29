@@ -63,7 +63,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(path: ':lib_zxing')
-
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -96,4 +95,6 @@ dependencies {
 
     compile 'com.meituan.android.walle:library:1.1.4'
     compile 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
+
 }
