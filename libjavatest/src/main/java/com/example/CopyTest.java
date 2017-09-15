@@ -1,9 +1,8 @@
 package com.example;
 
-import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by liujun on 17/8/25.
@@ -18,5 +17,12 @@ public class CopyTest {
     int[] temp = Arrays.copyOf(src,5);
     System.out.println(Arrays.toString(temp));
     //new BufferedOutputStream(new DataOutputStream(new FileOutputStream("")));
+
+    //Pattern pattern = Pattern.compile("^\\d+[+\\-\\*/]\\d+$");
+    Pattern pattern = Pattern.compile("^\\d+[[+][-][*][/]]\\d+$");
+    Matcher matcher = pattern.matcher("123*123124");
+    System.out.println(matcher.find());
+    Thread tHread;
+
   }
 }

@@ -15,17 +15,25 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import java.lang.reflect.Method;
 import xxx.test.allapplication.R;
+import xxx.test.allapplication.custom.MyView;
 
 public class ViewActivity extends AppCompatActivity {
 
     @BindView(R.id.activity_view)
     RelativeLayout rl;
-
+    @BindView(R.id.view)
+    MyView myView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
         ButterKnife.bind(this);
+        //myView.setScaleX(2f);
+        myView.post(new Runnable() {
+            @Override public void run() {
+                Log.i("neo","left = "+myView.getLeft());
+            }
+        });
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         Log.i("neo", "height = " + metrics.heightPixels);//height = 1776

@@ -1,4 +1,4 @@
 <resources>
-  <string name="app_name">AllApplication</string>
-  <string name="Spannable">Spannable</string>
+    <string name="app_name">AllApplication</string>
+    <string name="Spannable">Spannable</string>
 </resources>

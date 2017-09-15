@@ -2,21 +2,21 @@ package xxx.test.allapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.zxing.client.android.CaptureActivity;
-import com.jaeger.library.StatusBarUtil;
 import xxx.test.allapplication.activity.CameraActivity;
 import xxx.test.allapplication.activity.CameraActivity2;
 import xxx.test.allapplication.activity.CountDownActivity;
 import xxx.test.allapplication.activity.CustomeAnimationActivity;
 import xxx.test.allapplication.activity.FileDownloaderActivity;
 import xxx.test.allapplication.activity.GlideActivity;
+import xxx.test.allapplication.activity.GridLayoutActivity;
 import xxx.test.allapplication.activity.HotFixActivity;
 import xxx.test.allapplication.activity.NDKActivity;
 import xxx.test.allapplication.activity.NestedFragmentActivity;
@@ -39,15 +39,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         App.mSystemUiVisibility = getWindow().getDecorView().getSystemUiVisibility();
-        StatusBarUtil.setColor(this, ContextCompat.getColor(this,R.color.colorPrimaryDark),0);
+        //StatusBarUtil.setColor(this, ContextCompat.getColor(this,R.color.colorPrimaryDark),0);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         imageView = (ImageView) findViewById(R.id.imageView);
         TextView textView = new TextView(this);
         textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT));
         textView.setText("neoeneas");
-        ViewGroup viewGroup = (ViewGroup) getWindow().getDecorView();
-        View view = viewGroup.getChildAt(0);
-        viewGroup.addView(textView);
+        //ViewGroup viewGroup = (ViewGroup) getWindow().getDecorView();
+        //View view = viewGroup.getChildAt(0);
+        //viewGroup.addView(textView);
     }
 
     public void spannable(View view){
@@ -128,5 +130,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void slide(View view) {
         startActivity(new Intent(this, SlidingMenuActivity.class));
+    }
+
+    public void grid(View view) {
+        startActivity(new Intent(this, GridLayoutActivity.class));
     }
 }
