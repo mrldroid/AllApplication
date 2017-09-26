@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "xxx.test.allapplication"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,21 +29,21 @@ android {
                 dx.additionalParameters += '--set-max-idx-number=10000'
             }
         }
-        jackOptions {
-            enabled true
-        }
+//        jackOptions {
+//            enabled true
+//        }
 
         ndk{
             moduleName "neo"         //生成的so名字
             ldLibs "log"
-            abiFilters "armeabi", "armeabi-v7a","x86"
+            abiFilters "armeabi", "armeabi-v7a"
         }
 
 
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
     buildTypes {
         release {
@@ -97,6 +97,8 @@ dependencies {
     compile 'com.facebook.shimmer:shimmer:0.1.0@aar'
 
     compile 'com.android.support:gridlayout-v7:25.3.1'
+
+    compile 'com.android.support:design:25.1.0'
 
 
 }

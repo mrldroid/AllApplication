@@ -45,9 +45,10 @@
         <activity android:name=".activity.HotFixActivity" />
         <activity android:name=".activity.TextViewAnimationActivity" />
         <activity android:name=".activity.CountDownActivity" />
-        <activity android:name=".activity.TestActivity"></activity>
-        <activity android:name=".activity.SlidingMenuActivity"></activity>
-        <activity android:name=".activity.GridLayoutActivity"></activity>
+        <activity android:name=".activity.TestActivity" />
+        <activity android:name=".activity.SlidingMenuActivity" />
+        <activity android:name=".activity.GridLayoutActivity" />
+        <activity android:name=".activity.RecyclerViewActivity"></activity>
     </application>
 
 </manifest>

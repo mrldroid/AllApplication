@@ -44,7 +44,7 @@ public class CollapseView extends LinearLayout {
         RelativeLayout mTitleRelativeLayout = (RelativeLayout) findViewById(R.id.titleRelativeLayout);
         mContentRelativeLayout=(RelativeLayout)findViewById(R.id.contentRelativeLayout);
         mArrowImageView =(ImageView)findViewById(R.id.arrowImageView);
-        mTitleRelativeLayout.setOnClickListener(v -> rotateArrow());
+//        mTitleRelativeLayout.setOnClickListener(v -> rotateArrow());
 
         collapse(mContentRelativeLayout);
     }

@@ -66,10 +66,12 @@ public class NDKActivity extends AppCompatActivity {
     }
 
     public void bspatch(View view) {
-        new Thread(() -> {
-            bspatch(oldPath,mergePath,patchPath);
-            runOnUiThread(() -> Prompt.showToast("合并差分包完成"));
-        }).start();
+//        new Thread(() -> {
+//            bspatch(oldPath,mergePath,patchPath);
+//            runOnUiThread(() -> {
+//                Prompt.showToast("合并差分包完成");
+//            });
+//        }).start();
 
 
 

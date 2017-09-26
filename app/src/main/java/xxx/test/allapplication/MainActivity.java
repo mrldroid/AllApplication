@@ -1,6 +1,7 @@
 package xxx.test.allapplication;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,7 +10,9 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.zxing.client.android.CaptureActivity;
+
 import xxx.test.allapplication.activity.CameraActivity;
 import xxx.test.allapplication.activity.CameraActivity2;
 import xxx.test.allapplication.activity.CountDownActivity;
@@ -21,6 +24,7 @@ import xxx.test.allapplication.activity.HotFixActivity;
 import xxx.test.allapplication.activity.NDKActivity;
 import xxx.test.allapplication.activity.NestedFragmentActivity;
 import xxx.test.allapplication.activity.NotificationRemoteViewActivity;
+import xxx.test.allapplication.activity.RecyclerViewActivity;
 import xxx.test.allapplication.activity.RetrofitActivity;
 import xxx.test.allapplication.activity.RxJava2Activity;
 import xxx.test.allapplication.activity.SlidingMenuActivity;
@@ -117,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK && data != null) {
                     String result = data.getStringExtra("data");
                     Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-                    imageView.setImageBitmap(data.getParcelableExtra("bitmap"));
+                    imageView.setImageBitmap((Bitmap) data.getParcelableExtra("bitmap"));
                 }
                 break;
         }
@@ -134,5 +138,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void grid(View view) {
         startActivity(new Intent(this, GridLayoutActivity.class));
+    }
+
+    public void recyclerView(View view) {
+        startActivity(new Intent(this, RecyclerViewActivity.class));
     }
 }

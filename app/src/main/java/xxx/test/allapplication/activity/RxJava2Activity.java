@@ -9,7 +9,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observable;
 import xxx.test.allapplication.R;
 
 public class RxJava2Activity extends AppCompatActivity {
@@ -26,22 +25,23 @@ public class RxJava2Activity extends AppCompatActivity {
         list.add("l");
         list.add("o");
 
-        Observable.fromIterable(list).filter(s -> !s.equals("l")).subscribe(s -> Log.i("neo",s));
+     //   Observable.fromIterable(list).filter(s -> !s.equals("l")).subscribe(s -> Log.i("neo",s));
         Log.i("neo",validate("liujun","s")+"");
 
         System.out.println(scale(10,4));
-        Observable.just(scale(10,4))
-                .subscribe(value-> Log.i("neo","。。。。"+value+""));
+//        Observable.just(scale(10,4))
+//                .subscribe(value-> Log.i("neo","。。。。"+value+""));
 
     }
 
     private  boolean validate(String username, String password) {
-        final boolean[] isValid = {true};
-        Observable.just(username, password).subscribe(s -> {
-            if (!(s != null && !s.isEmpty() && s.length() > 3))
-                throw new RuntimeException();
-        }, throwable -> isValid[0] = false);
-        return isValid[0];
+//        final boolean[] isValid = {true};
+//        Observable.just(username, password).subscribe(s -> {
+//            if (!(s != null && !s.isEmpty() && s.length() > 3))
+//                throw new RuntimeException();
+//        }, throwable -> isValid[0] = false);
+//        return isValid[0];
+        return false;
     }
 
     private  float scale(int width, int height){

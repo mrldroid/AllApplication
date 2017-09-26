@@ -22,12 +22,12 @@ public class TextViewAnimationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_view_animation);
-        ImageView imgLayer = (ImageView) findViewById(R.id.imgLayer);
-        ImageView imgRight = (ImageView) findViewById(R.id.imgRight);
-        ImageView shadow = (ImageView) findViewById(R.id.shadow);
-        TextView sale_car_left_txt = (TextView) findViewById(R.id.sale_car_left_txt);
-        TextView text = (TextView) findViewById(R.id.text);
-        RelativeLayout activity_text_view_animation = (RelativeLayout) findViewById(R.id.activity_text_view_animation);
+        final ImageView imgLayer = (ImageView) findViewById(R.id.imgLayer);
+        final ImageView imgRight = (ImageView) findViewById(R.id.imgRight);
+        final ImageView shadow = (ImageView) findViewById(R.id.shadow);
+        final TextView sale_car_left_txt = (TextView) findViewById(R.id.sale_car_left_txt);
+        final TextView text = (TextView) findViewById(R.id.text);
+        final RelativeLayout activity_text_view_animation = (RelativeLayout) findViewById(R.id.activity_text_view_animation);
         activity_text_view_animation.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {

@@ -128,4 +128,9 @@
         android:layout_height="wrap_content"
         android:text="gridLayout"
         android:onClick="grid"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RecyclerView"
+        android:onClick="recyclerView"/>
 </xxx.test.allapplication.custom.FlowLayout>
