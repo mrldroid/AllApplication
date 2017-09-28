@@ -27,6 +27,9 @@ public class MyView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        Log.i("neo","width mode = "+(MeasureSpec.getMode(widthMeasureSpec)==MeasureSpec.EXACTLY?"EXACTLY":MeasureSpec.getMode(widthMeasureSpec)==MeasureSpec.AT_MOST?"AT_MOST":"UnDefine")+"  size = "+MeasureSpec.getSize(widthMeasureSpec));
+        Log.i("neo","height mode = "+(MeasureSpec.getMode(heightMeasureSpec)==MeasureSpec.EXACTLY?"EXACTLY":MeasureSpec.getMode(heightMeasureSpec)==MeasureSpec.AT_MOST?"AT_MOST":"UnDefine")+"  size = "+MeasureSpec.getSize(heightMeasureSpec));
+
         super.onMeasure(widthMeasureSpec,heightMeasureSpec);
     }
 

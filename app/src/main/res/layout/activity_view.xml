@@ -7,7 +7,9 @@
     android:layout_height="wrap_content"
     android:background="@color/colorGold"
     tools:context="xxx.test.allapplication.activity.ViewActivity">
-
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="500px"
+        android:layout_height="500px">
     <xxx.test.allapplication.custom.MyView
         android:id="@+id/view"
         android:paddingLeft="20px"
@@ -16,6 +18,7 @@
         android:layout_width="200px"
         android:layout_height="200px"
         android:background="@color/colorAccent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="400px"

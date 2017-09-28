@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textAllCaps">false</item><!--默认不大写-->
+        <item name="android:listDivider">@color/color_f85d00</item>
     </style>
 
 </resources>
