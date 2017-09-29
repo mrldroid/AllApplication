@@ -27,8 +27,8 @@ public abstract class SwipeHorizontal {
     private int direction;
     private View menuView;
     protected Checker mChecker;
-    public static final int RIGHT_DIRECTION = 1;
-    public static final int LEFT_DIRECTION = 2;
+    public static final int RIGHT_DIRECTION = -1;
+    public static final int LEFT_DIRECTION = 1;
 
 
     public SwipeHorizontal(int direction, View menuView) {

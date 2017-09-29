@@ -20,6 +20,7 @@ import android.widget.OverScroller;
 
 /**
  * Created by Yan Zhenjie on 2016/7/22.
+ * 左滑,显示右边菜单
  */
 class SwipeRightHorizontal extends SwipeHorizontal {
 
@@ -38,7 +39,7 @@ class SwipeRightHorizontal extends SwipeHorizontal {
         return scrollX > -getMenuView().getWidth() * getDirection();
     }
 
-    @Override
+    @Override//scrollX 初始x轴起始位置
     public void autoOpenMenu(OverScroller scroller, int scrollX, int duration) {
         scroller.startScroll(Math.abs(scrollX), 0, getMenuView().getWidth() - Math.abs(scrollX), 0, duration);
     }

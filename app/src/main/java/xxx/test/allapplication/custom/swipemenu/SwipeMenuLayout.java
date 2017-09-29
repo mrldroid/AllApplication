@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -157,6 +158,7 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
                 return Math.abs(disX) > mScaledTouchSlop && Math.abs(disX) > Math.abs(disY);//返回是否是水平滑动
             }
             case MotionEvent.ACTION_UP: {
+                Log.i("neo","up = "+(int) ev.getX());
                 boolean isClick = mSwipeCurrentHorizontal != null
                         && mSwipeCurrentHorizontal.isClickOnContentView(getWidth(), ev.getX());
                 if (isMenuOpen() && isClick) {
@@ -209,8 +211,8 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
                         }
                     }
                     scrollBy(disX, 0);//使内容滑动
-                    mLastX = (int) ev.getX();
-                    mLastY = (int) ev.getY();
+                    mLastX = (int) ev.getX();//更新值
+                    mLastY = (int) ev.getY();//更新值
                     shouldResetSwipe = false;
                 }
                 break;
@@ -219,22 +221,22 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
                 dx = (int) (mDownX - ev.getX());
                 dy = (int) (mDownY - ev.getY());
                 mDragging = false;
-                mVelocityTracker.computeCurrentVelocity(1000, mScaledMaximumFlingVelocity);
-                int velocityX = (int) mVelocityTracker.getXVelocity();
+                mVelocityTracker.computeCurrentVelocity(1000, mScaledMaximumFlingVelocity);//计算当前的速度,单位为 px/s  1s多少像素
+                int velocityX = (int) mVelocityTracker.getXVelocity();//水平方向滑动速度
                 int velocity = Math.abs(velocityX);
-                if (velocity > mScaledMinimumFlingVelocity) {
+                if (velocity > mScaledMinimumFlingVelocity) {//速度大于系统最小
                     if (mSwipeCurrentHorizontal != null) {
                         int duration = getSwipeDuration(ev, velocity);
-                        if (mSwipeCurrentHorizontal instanceof SwipeRightHorizontal) {
-                            if (velocityX < 0) {
+                        if (mSwipeCurrentHorizontal instanceof SwipeRightHorizontal) {//如果有右菜单
+                            if (velocityX < 0) {//左滑
                                 smoothOpenMenu(duration);
-                            } else {
+                            } else {//右滑
                                 smoothCloseMenu(duration);
                             }
-                        } else {
-                            if (velocityX > 0) {
+                        } else {////如果有左菜单
+                            if (velocityX > 0) {//右滑
                                 smoothOpenMenu(duration);
-                            } else {
+                            } else {//左滑
                                 smoothCloseMenu(duration);
                             }
                         }
@@ -279,23 +281,23 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
      * @return finish duration.
      */
     private int getSwipeDuration(MotionEvent ev, int velocity) {
-        int sx = getScrollX();
-        int dx = (int) (ev.getX() - sx);
+        int sx = getScrollX();// 获取x轴起始位置
+        int dx = (int) (ev.getX() - sx);//计算x方向上移动的距离
         final int width = mSwipeCurrentHorizontal.getMenuWidth();
         final int halfWidth = width / 2;
-        final float distanceRatio = Math.min(1f, 1.0f * Math.abs(dx) / width);
+        final float distanceRatio = Math.min(1f, 1.0f * Math.abs(dx) / width);////要移动的距离占宽度的比例，这个比例必须得小于等于1
         final float distance = halfWidth + halfWidth * distanceInfluenceForSnapDuration(distanceRatio);
         int duration;
-        if (velocity > 0) {
+        if (velocity > 0) {//如果是手指滑动，则需要根据手指滑动速度计算滑动持续时间
             duration = 4 * Math.round(1000 * Math.abs(distance / velocity));
-        } else {
+        } else {//如果手指滑动速度为0，即，是通过代码的方式滑动到指定位置，则使用另一种方式计算滑动持续时间
             final float pageDelta = (float) Math.abs(dx) / width;
             duration = (int) ((pageDelta + 1) * 100);
         }
         duration = Math.min(duration, mScrollerDuration);
         return duration;
     }
-
+    //实现变速滑动
     float distanceInfluenceForSnapDuration(float f) {
         f -= 0.5f; // center the values about 0.
         f *= 0.3f * Math.PI / 2.0f;
@@ -323,16 +325,16 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
         if (mSwipeCurrentHorizontal == null) {
             super.scrollTo(x, y);
         } else {
-            SwipeHorizontal.Checker checker = mSwipeCurrentHorizontal.checkXY(x, y);
-            shouldResetSwipe = checker.shouldResetSwipe;
-            if (checker.x != getScrollX()) {
+            SwipeHorizontal.Checker checker = mSwipeCurrentHorizontal.checkXY(x, y);//处理边界问题
+            shouldResetSwipe = checker.shouldResetSwipe;//x = 0 时为true
+            if (checker.x != getScrollX()) {//处理边界问题!!!
                 super.scrollTo(checker.x, checker.y);
             }
         }
     }
 
     @Override
-    public void computeScroll() {
+    public void computeScroll() {//和mScroller.startScroll配置使用 弹性滑动 固定代码
         if (mScroller.computeScrollOffset() && mSwipeCurrentHorizontal != null) {
             if (mSwipeCurrentHorizontal instanceof SwipeRightHorizontal) {
                 scrollTo(Math.abs(mScroller.getCurrX()), 0);
@@ -428,6 +430,9 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
         }
     }
 
+    /**
+     * 平滑的打开菜单
+     */
     private void smoothOpenMenu(int duration) {
         if (mSwipeCurrentHorizontal != null) {
             mSwipeCurrentHorizontal.autoOpenMenu(mScroller, getScrollX(), duration);
@@ -470,7 +475,7 @@ public class SwipeMenuLayout extends FrameLayout implements SwipeSwitch {
         int contentViewHeight = 0;
 
         if (mContentView != null) {
-            measureChildWithMargins(mContentView, widthMeasureSpec, 0, heightMeasureSpec, 0);
+            measureChildWithMargins(mContentView, widthMeasureSpec, 0, heightMeasureSpec, 0);//测量mContentView,中间的布局
             contentViewHeight = mContentView.getMeasuredHeight();
         }
 
