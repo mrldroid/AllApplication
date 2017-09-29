@@ -7,9 +7,6 @@
     android:layout_height="wrap_content"
     android:background="@color/colorGold"
     tools:context="xxx.test.allapplication.activity.ViewActivity">
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:layout_width="500px"
-        android:layout_height="500px">
     <xxx.test.allapplication.custom.MyView
         android:id="@+id/view"
         android:paddingLeft="20px"
@@ -18,7 +15,6 @@
         android:layout_width="200px"
         android:layout_height="200px"
         android:background="@color/colorAccent"/>
-    </android.support.v4.widget.SwipeRefreshLayout>
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="400px"
@@ -53,8 +49,39 @@
         android:layout_toRightOf="@id/sss"
         android:layout_height="200dp"/>
     <xxx.test.allapplication.custom.SurfaceViewTemplate
+        android:id="@+id/st"
         android:layout_below="@id/rl"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    <xxx.test.allapplication.custom.swipemenu.SwipeMenuLayout
+        xmlns:swipe="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipeMenuLayout"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_toRightOf="@id/st"
+        android:layout_below="@id/rl"
+        swipe:contentViewId="@+id/swipe_content"
+        swipe:leftViewId="@+id/swipe_left"
+        swipe:rightViewId="@+id/swipe_right">
+        <xxx.test.allapplication.custom.swipemenu.SwipeMenuView
+            android:id="@id/swipe_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
 
+        <FrameLayout
+            android:id="@id/swipe_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="neo"/>
+        </FrameLayout>>
+
+        <xxx.test.allapplication.custom.swipemenu.SwipeMenuView
+            android:id="@id/swipe_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+    </xxx.test.allapplication.custom.swipemenu.SwipeMenuLayout>
 </RelativeLayout>

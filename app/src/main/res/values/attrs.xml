@@ -5,4 +5,11 @@
         <attr name="textColor" format="color" />
         <attr name="textSize" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="recycler_swipe_SwipeMenuLayout">
+        <attr name="leftViewId" format="reference"/>
+        <attr name="rightViewId" format="reference"/>
+        <attr name="contentViewId" format="reference"/>
+    </declare-styleable>
+
 </resources>

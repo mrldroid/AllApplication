@@ -2,6 +2,7 @@ package xxx.test.allapplication.activity;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,12 +11,22 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import java.lang.reflect.Method;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import java.lang.reflect.Method;
 import xxx.test.allapplication.R;
 import xxx.test.allapplication.custom.MyView;
+import xxx.test.allapplication.custom.swipemenu.SwipeMenu;
+import xxx.test.allapplication.custom.swipemenu.SwipeMenuItem;
+import xxx.test.allapplication.custom.swipemenu.SwipeMenuLayout;
+import xxx.test.allapplication.custom.swipemenu.SwipeMenuView;
+
+import static xxx.test.allapplication.custom.swipemenu.SwipeHorizontal.LEFT_DIRECTION;
+import static xxx.test.allapplication.custom.swipemenu.SwipeHorizontal.RIGHT_DIRECTION;
 
 public class ViewActivity extends AppCompatActivity {
 
@@ -23,6 +34,8 @@ public class ViewActivity extends AppCompatActivity {
     RelativeLayout rl;
     @BindView(R.id.view)
     MyView myView;
+    @BindView(R.id.swipeMenuLayout)
+    SwipeMenuLayout swipeMenuLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +64,67 @@ public class ViewActivity extends AppCompatActivity {
 //        });
 //        User user = new Gson().fromJson("{\"xxx\":\"怪盗kidou\",\"ag\":24,\"email_address\":\"ikidou@example.com\"}\n",User.class);
 //        Log.i("neo","user = "+user.name+" "+user.address+" "+user.age);
-    }
 
+
+        SwipeMenu swipeLeftMenu = new SwipeMenu(swipeMenuLayout, 0);
+        SwipeMenu swipeRightMenu = new SwipeMenu(swipeMenuLayout, 0);
+
+        int width = getResources().getDimensionPixelSize(R.dimen.dp_70);
+
+        int height = ViewGroup.LayoutParams.MATCH_PARENT;
+
+        // 添加左侧的，如果不添加，则左侧不会出现菜单。
+        {
+//            SwipeMenuItem addItem = new SwipeMenuItem(ViewActivity.this)
+//                    .setText("删除")
+//                    .setTextColor(Color.WHITE)
+//                    .setWidth(width)
+//                    .setHeight(height);
+//            swipeLeftMenu.addMenuItem(addItem); // 添加菜单到左侧。
+//
+//            SwipeMenuItem closeItem = new SwipeMenuItem(ViewActivity.this)
+//                    .setImage(R.mipmap.ic_launcher)
+//                    .setWidth(width)
+//                    .setHeight(height);
+//            swipeLeftMenu.addMenuItem(closeItem); // 添加菜单到左侧。
+        }
+
+        // 添加右侧的，如果不添加，则右侧不会出现菜单。
+        {
+            SwipeMenuItem deleteItem = new SwipeMenuItem(ViewActivity.this)
+                    .setText("删除")
+                    .setTextColor(Color.WHITE)
+                    .setWidth(width)
+                    .setHeight(height);
+            swipeRightMenu.addMenuItem(deleteItem);// 添加菜单到右侧。
+
+            SwipeMenuItem addItem = new SwipeMenuItem(ViewActivity.this)
+                    .setText("添加")
+                    .setTextColor(Color.WHITE)
+                    .setWidth(width)
+                    .setHeight(height);
+            swipeRightMenu.addMenuItem(addItem); // 添加菜单到右侧。
+        }
+
+        int leftMenuCount = swipeLeftMenu.getMenuItems().size();
+        if (leftMenuCount > 0) {
+            SwipeMenuView swipeLeftMenuView = (SwipeMenuView) swipeMenuLayout.findViewById(R.id.swipe_left);
+            // noinspection WrongConstant
+            swipeLeftMenuView.setOrientation(swipeLeftMenu.getOrientation());
+            swipeLeftMenuView.createMenu(swipeLeftMenu, swipeMenuLayout, null, LEFT_DIRECTION);
+        }
+
+        int rightMenuCount = swipeRightMenu.getMenuItems().size();
+        if (rightMenuCount > 0) {
+            SwipeMenuView swipeRightMenuView = (SwipeMenuView) swipeMenuLayout.findViewById(R.id.swipe_right);
+            // noinspection WrongConstant
+            swipeRightMenuView.setOrientation(swipeRightMenu.getOrientation());
+            swipeRightMenuView.createMenu(swipeRightMenu, swipeMenuLayout, null, RIGHT_DIRECTION);
+        }
+//        ViewGroup viewGroup = (ViewGroup) swipeMenuLayout.findViewById(R.id.swipe_content);
+//
+//        viewGroup.addView();
+    }
 
     @Override
     protected void onResume() {
