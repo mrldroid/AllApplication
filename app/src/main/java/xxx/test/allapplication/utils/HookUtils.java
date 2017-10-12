@@ -14,19 +14,18 @@ import java.lang.reflect.Proxy;
 public class HookUtils {
     public void hookAms() throws Exception{
         Class<?> clazz = Class.forName("android.app.ActivityManagerNative");//ActivityManagerNative class 对象
-        Field gDefaultField = clazz.getDeclaredField("gDefault");//拿到ActivityManagerNative  gDefault 变量（类型为Singleton）
-        Method gDefaultMethod = clazz.getDeclaredMethod("getDefault");//拿到 ActivityManagerNative.getDefault()静态方法
+        Field gDefaultField = clazz.getDeclaredField("gDefault");//拿到ActivityManagerNative  gDefault 变量
         gDefaultField.setAccessible(true);
-        gDefaultMethod.setAccessible(true);
-        Object sysIActivityManager = gDefaultMethod.invoke(clazz);//调用方法得到系统的IActivityManager
-        Class<?> singleTonClazz = Class.forName("android.util.Singleton");//gDefault代理对象
+        Object gDefaultFieldObj = gDefaultField.get(null);//静态所属的是类不是对象所以为null，得到gDefault的值（类型为Singleton）
 
+        Class<?> singleTonClazz = Class.forName("android.util.Singleton");
         Field mInstanceField = singleTonClazz.getDeclaredField("mInstance");
-        Object iActivityManagerObj = Proxy.newProxyInstance(sysIActivityManager.getClass().getClassLoader(),sysIActivityManager.getClass().getInterfaces(), new MyHandler(sysIActivityManager));
         mInstanceField.setAccessible(true);
-        mInstanceField.set(gDefaultField,iActivityManagerObj);//设置代理的IActivityManager
-        gDefaultField.set(clazz,singleTonClazz);
+        Object sysIActivityManager = mInstanceField.get(gDefaultFieldObj);//系统的IActivityManager，mInstanceField所属的对象是gDefaultFieldObj（类型为Singleton）
 
+        Class<?> iActivityManagerProxy = Class.forName("android.app.IActivityManager");//代理对象
+        Object proxy = Proxy.newProxyInstance(sysIActivityManager.getClass().getClassLoader(),new Class[]{iActivityManagerProxy}, new MyHandler(sysIActivityManager));
+        mInstanceField.set(gDefaultFieldObj,proxy);//设置代理的IActivityManager
     }
 
 
