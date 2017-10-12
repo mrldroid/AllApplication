@@ -36,7 +36,7 @@ android {
         ndk{
             moduleName "neo"         //生成的so名字
             ldLibs "log"
-            abiFilters "armeabi", "armeabi-v7a"
+            abiFilters "armeabi", "armeabi-v7a","x86"
         }
 
 

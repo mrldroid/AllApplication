@@ -133,4 +133,9 @@
         android:layout_height="wrap_content"
         android:text="RecyclerView"
         android:onClick="recyclerView"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NavigationActivity"
+        android:onClick="NavigationActivity"/>
 </xxx.test.allapplication.custom.FlowLayout>

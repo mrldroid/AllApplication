@@ -48,7 +48,8 @@
         <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.SlidingMenuActivity" />
         <activity android:name=".activity.GridLayoutActivity" />
-        <activity android:name=".activity.RecyclerViewActivity"></activity>
+        <activity android:name=".activity.RecyclerViewActivity" />
+        <activity android:name=".material_design.TransluentActivity"/>
     </application>
 
 </manifest>

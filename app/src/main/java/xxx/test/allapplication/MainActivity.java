@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +33,7 @@ import xxx.test.allapplication.activity.TestActivity;
 import xxx.test.allapplication.activity.TextViewAnimationActivity;
 import xxx.test.allapplication.activity.ViewActivity;
 import xxx.test.allapplication.activity.Zip4jActivity;
+import xxx.test.allapplication.material_design.TransluentActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         App.mSystemUiVisibility = getWindow().getDecorView().getSystemUiVisibility();
-        //StatusBarUtil.setColor(this, ContextCompat.getColor(this,R.color.colorPrimaryDark),0);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         imageView = (ImageView) findViewById(R.id.imageView);
         TextView textView = new TextView(this);
@@ -142,5 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void recyclerView(View view) {
         startActivity(new Intent(this, RecyclerViewActivity.class));
+    }public void NavigationActivity(View view) {
+        startActivity(new Intent(this, TransluentActivity.class));
     }
 }
