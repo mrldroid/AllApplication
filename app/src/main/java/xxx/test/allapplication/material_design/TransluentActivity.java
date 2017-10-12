@@ -15,5 +15,6 @@ public class TransluentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_navigation);
         StatusBarUtil.setColor(this, ContextCompat.getColor(this,R.color.colorPrimaryDark),0);
 
+
     }
 }
