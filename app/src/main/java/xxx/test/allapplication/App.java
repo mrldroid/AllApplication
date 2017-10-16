@@ -27,6 +27,7 @@ public class App extends Application{
         HookUtils hookUtils = new HookUtils();
         try {
             hookUtils.hookAms();
+            hookUtils.hookHandler();
         } catch (Exception e) {
             e.printStackTrace();
         }
