@@ -12,4 +12,9 @@
         <attr name="contentViewId" format="reference"/>
     </declare-styleable>
 
+    <declare-styleable name="BorderTextView">
+        <attr name="borderStrokeWidth" format="float"/>
+        <attr name="borderColor" format="color"/>
+        <attr name="cornerRadius" format="float"/>
+    </declare-styleable>
 </resources>

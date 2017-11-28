@@ -1,1 +1,1 @@
-include ':app', ':lib_zxing', ':libjavatest'
+include ':app', ':lib_zxing', ':libjavatest', ':mylibrary'

@@ -1,11 +1,17 @@
 package xxx.test.allapplication.activity;
 
+import android.Manifest;
+import android.app.AppOpsManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.hardware.Camera;
+import android.os.Binder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceView;
@@ -15,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.List;
 
 import butterknife.BindView;
@@ -76,6 +84,24 @@ public class CameraActivity extends AppCompatActivity implements ViewTreeObserve
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         ButterKnife.bind(this);
+        Log.i("neo","ActivityCompat = "+ ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA));
+       Log.i("neo","PermissionChecker = "+PermissionChecker.checkCallingOrSelfPermission(this, Manifest.permission.CAMERA));
+        AppOpsManager systemService = (AppOpsManager) getSystemService(Context.APP_OPS_SERVICE);
+        if(systemService!= null){
+            try {
+                Method method = AppOpsManager.class.getDeclaredMethod("checkOp",Integer.TYPE,Integer.TYPE,String.class);
+                Field field = AppOpsManager.class.getDeclaredField("OP_CAMERA");
+                field.setAccessible(true);
+                method.setAccessible(true);
+                int op = field.getInt(systemService);
+                Log.i("neo"," op = "+op);
+                int checkOp = (int) method.invoke(systemService,op, Binder.getCallingUid(),getPackageName());
+                Log.i("neo","AppOpsManager = "+AppOpsManager.MODE_ALLOWED);
+                Log.i("neo","checkOp == "+checkOp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         mSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(this);
         mPath = Environment.getExternalStorageDirectory().toString() +"/xxxxx/";
         cameraHelper = new CameraHelper();

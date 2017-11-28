@@ -6,6 +6,10 @@ package classloader;
 
 public class MyClassLoaderTest {
     public static void main(String[] args) {
+
+        String time = "09:00-10:00";
+        System.out.println(time.substring(0,2));
+        System.out.println(time.substring(6,8));
 //        MyClassLoader cl1 = new MyClassLoader();
 //        String className = "classloader.HelloService";
 //        Class<?> class1 = null;

@@ -6,7 +6,6 @@ import android.support.multidex.MultiDex;
 
 import com.liulishuo.filedownloader.FileDownloader;
 
-import xxx.test.allapplication.utils.HookUtils;
 import xxx.test.allapplication.utils.MIUIUtil;
 
 /**
@@ -24,13 +23,13 @@ public class App extends Application{
         isMIUI = MIUIUtil.isMIUI();
         app = this;
         FileDownloader.init(getApplicationContext());
-        HookUtils hookUtils = new HookUtils();
-        try {
-            hookUtils.hookAms();
-            hookUtils.hookHandler();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        HookUtils hookUtils = new HookUtils();
+//        try {
+//            hookUtils.hookAms();
+//            hookUtils.hookHandler();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static boolean isMIUI() {

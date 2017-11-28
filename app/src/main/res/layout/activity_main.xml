@@ -5,137 +5,151 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="xxx.test.allapplication.MainActivity">
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/Spannable"
-    android:onClick="spannable"
-    />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="StaticLayout"
+        android:onClick="spannable"
+        android:text="@string/Spannable" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="staticLayout"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View"
-        android:onClick="view"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Glide"
-        android:onClick="glide"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Camera"
-        android:onClick="camera"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="camera2"
-        android:onClick="camera2"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="zip4j"
-        android:onClick="zip4j"
-        />
+        android:text="StaticLayout" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FileDownloader"
+        android:onClick="view"
+        android:text="View" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="glide"
+        android:text="Glide" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="camera"
+        android:text="Camera" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="camera2"
+        android:text="camera2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="zip4j"
+        android:text="zip4j" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="fileDownloader"
-        />
+        android:text="FileDownloader" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="customeAnimation"
         android:onClick="animate"
-        />
+        android:text="customeAnimation" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="retrofit"
         android:onClick="retrofit"
-        />
+        android:text="retrofit" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="rxjava2"
         android:onClick="rxjava2"
-        />
+        android:text="rxjava2" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ndk"
         android:onClick="ndk"
-        />
+        android:text="ndk" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="通知栏RemoteView"
         android:onClick="notify"
-        />
+        android:text="通知栏RemoteView" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="扫码"
         android:onClick="scan"
-        />
+        android:text="扫码" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hotfix"
         android:onClick="hotfix"
-        />
+        android:text="hotfix" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="文字闪亮"
         android:onClick="text"
-        />
+        android:text="文字闪亮" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="countDown"
         android:onClick="countDown"
-        />
+        android:text="countDown" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
-        android:onClick="test"/>
+        android:onClick="test"
+        android:text="test" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="slidingMenu"
-        android:onClick="slide"/>
+        android:onClick="slide"
+        android:text="slidingMenu" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="gridLayout"
-        android:onClick="grid"/>
+        android:onClick="grid"
+        android:text="gridLayout" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RecyclerView"
-        android:onClick="recyclerView"/>
+        android:onClick="recyclerView"
+        android:text="RecyclerView" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NavigationActivity"
-        android:onClick="NavigationActivity"/>
+        android:onClick="NavigationActivity"
+        android:text="NavigationActivity" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="video"
+        android:text="VideoActivity" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="dynamicLoad"
+        android:text="动态加载" />
 </xxx.test.allapplication.custom.FlowLayout>

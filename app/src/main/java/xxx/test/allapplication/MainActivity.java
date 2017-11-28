@@ -16,6 +16,7 @@ import xxx.test.allapplication.activity.CameraActivity;
 import xxx.test.allapplication.activity.CameraActivity2;
 import xxx.test.allapplication.activity.CountDownActivity;
 import xxx.test.allapplication.activity.CustomeAnimationActivity;
+import xxx.test.allapplication.activity.DynamicLoadActivity;
 import xxx.test.allapplication.activity.FileDownloaderActivity;
 import xxx.test.allapplication.activity.GlideActivity;
 import xxx.test.allapplication.activity.GridLayoutActivity;
@@ -31,6 +32,7 @@ import xxx.test.allapplication.activity.SpannableActivity;
 import xxx.test.allapplication.activity.StaticLayoutActivity;
 import xxx.test.allapplication.activity.TestActivity;
 import xxx.test.allapplication.activity.TextViewAnimationActivity;
+import xxx.test.allapplication.activity.VideoActivity;
 import xxx.test.allapplication.activity.ViewActivity;
 import xxx.test.allapplication.activity.Zip4jActivity;
 import xxx.test.allapplication.material_design.TransluentActivity;
@@ -143,5 +145,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, RecyclerViewActivity.class));
     }public void NavigationActivity(View view) {
         startActivity(new Intent(this, TransluentActivity.class));
+    }
+
+    public void video(View view) {
+        startActivity(new Intent(this, VideoActivity.class));
+    }
+
+    public void dynamicLoad(View view) {
+        startActivity(new Intent(this, DynamicLoadActivity.class));
     }
 }
